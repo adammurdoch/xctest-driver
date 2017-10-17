@@ -1,0 +1,15 @@
+apply plugin: 'swift-executable'
+
+compileDebugSwift {
+    compilerArgs.add('-F')
+    compilerArgs.add('/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/')
+}
+
+linkDebug {
+    linkerArgs.add('-F')
+    linkerArgs.add('/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/')
+    linkerArgs.add('-Xlinker')
+    linkerArgs.add('-rpath')
+    linkerArgs.add('-Xlinker')
+    linkerArgs.add('/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/')
+}
