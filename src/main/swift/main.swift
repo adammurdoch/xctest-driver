@@ -10,6 +10,10 @@ class SomeTest: XCTestCase {
     }
 }
 
+class SomeTest2: XCTestCase {
+    func testOk2() {}
+}
+
 class Listener: NSObject, XCTestObservation {
     func testSuiteWillStart(_ testSuite: XCTestSuite) {
         print ("START TEST SUITE: " + testSuite.name!)
@@ -23,7 +27,7 @@ class Listener: NSObject, XCTestObservation {
     func testCase(_ testCase: XCTestCase, 
                 didFailWithDescription description: String, 
                 inFile filePath: String?, 
-                atLine lineNumber: Int) {
+                atLine lineNumber: UInt) {
         print("FAILURE: [" + description + "]")
     }
     func testCaseDidFinish(_ testCase: XCTestCase) {
@@ -35,5 +39,5 @@ let l = Listener()
 
 XCTestObservationCenter.shared().addTestObserver(l)
 
-let s = XCTestSuite(forTestCaseClass: SomeTest.self)
+let s = XCTestSuite.default()
 s.run()
